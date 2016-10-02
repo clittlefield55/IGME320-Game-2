@@ -27,17 +27,17 @@ public class Spray : MonoBehaviour {
         }
 	}
 
-    void OnCollisionEnter(Collision splat)
+    void OnCollisionEnter(UnityEngine.Collision splat)
     {
-        print("Ouch!");
-        if(splat.gameObject.tag == "Enemy")
+        Debug.Log("Ouch!");
+        if (splat.gameObject.tag == "Enemy")
         {
             // insert take damage code here.
             //nme = splat.gameObject;
             //nme.takeDamage(10);
         }
 
-        Destroy(this.gameObject);
+        Destroy(gameObject);
     }
 
     void Move()
