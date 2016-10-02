@@ -24,14 +24,14 @@ abstract public class Vehicle : MonoBehaviour {
 	public float maxForce = 6.0f;
 	public float mass = 1.0f;
 	public float radius = 1.0f;
-
+    public GameObject body;
 	CharacterController charControl;
 
 	abstract protected void CalcSteeringForces();
 
 	virtual public void Start(){
 		acceleration = Vector3.zero;
-		velocity = transform.forward;
+		velocity = body.transform.forward;
 		desired = Vector3.zero;
 
 		//store access to character controller component
@@ -51,13 +51,15 @@ abstract public class Vehicle : MonoBehaviour {
 		velocity.y = 0;
 		//limit velo to max speed
 		velocity = Vector3.ClampMagnitude (velocity, maxSpeed);
-		//dude face torward target
-		transform.forward = velocity.normalized;
+
+        //dude face torward target
+        //transform.forward = velocity.normalized;
+        //transform.forward = desired.normalized;
 		//added vel to pos to move
 		charControl.Move (velocity * Time.deltaTime);
 
-		Vector3 pos = transform.position;
-		transform.position = pos;
+		Vector3 pos = body.transform.position;
+        body.transform.position = pos;
 		//reset accel
 		acceleration = Vector3.zero;
 
@@ -68,11 +70,13 @@ abstract public class Vehicle : MonoBehaviour {
 	}
 
 	protected Vector3 Seek(Vector3 targetPosition){ 
-		desired = targetPosition - transform.position;
-		desired = desired.normalized * maxSpeed;
+		desired = targetPosition - body.transform.position;
+        body.transform.forward = -desired.normalized;
+
+        desired = desired.normalized * maxSpeed;
 		Vector3 seekingForce = desired - velocity;
-		seekingForce.y = 0; 
-		return seekingForce; 
+		seekingForce.y = 0;
+        return seekingForce; 
 	}
 
 

@@ -81,15 +81,16 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\PlayerController.cs" />
-    <Compile Include="Assets\Scripts\RangedWeapon.cs" />
-    <Compile Include="Assets\Scripts\Seeker.cs" />
-    <Compile Include="Assets\Scripts\SmoothFollow.cs" />
-    <Compile Include="Assets\Scripts\Spray.cs" />
-    <Compile Include="Assets\Scripts\Vehicle.cs" />
-    <Compile Include="Assets\Scripts\WaterGun.cs" />
-    <Compile Include="Assets\Scripts\Weapon.cs" />
-    <Compile Include="Assets\Scripts\monsterAtk.cs" />
+    <Compile Include="Assets\Scripts\Characrer\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\Characrer\RangedWeapon.cs" />
+    <Compile Include="Assets\Scripts\Characrer\Spray.cs" />
+    <Compile Include="Assets\Scripts\Characrer\WaterGun.cs" />
+    <Compile Include="Assets\Scripts\Characrer\Weapon.cs" />
+    <Compile Include="Assets\Scripts\MonsterScript\Bullet.cs" />
+    <Compile Include="Assets\Scripts\MonsterScript\FireBullet.cs" />
+    <Compile Include="Assets\Scripts\MonsterScript\Seeker.cs" />
+    <Compile Include="Assets\Scripts\MonsterScript\Vehicle.cs" />
+    <Compile Include="Assets\Scripts\TakeDamage.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Standard Assets\Characters\FirstPersonCharacter\FirstPersonCharacterGuidelines.txt" />
