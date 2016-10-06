@@ -26,7 +26,7 @@ public class WaterGun : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-	    if(Input.GetKeyDown(KeyCode.Space))
+	    if(Input.GetKeyDown(KeyCode.Mouse0))
         {
             Fire();
         }
@@ -34,6 +34,6 @@ public class WaterGun : MonoBehaviour {
 
     void Fire()
     {
-        Object spray = Instantiate(bullet, transform.position, GetComponent<Rigidbody>().transform.rotation);
+        Object spray = Instantiate(bullet, transform.position, transform.rotation);
     }
 }
