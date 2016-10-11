@@ -65,6 +65,10 @@ public class TakeDamage : MonoBehaviour {
     {
 
         Destroy(mainBody, 0.1f);
+        if (this.gameObject.tag == "Player")
+        {
+            Application.LoadLevel("Death");
+        }
     }
 
 
