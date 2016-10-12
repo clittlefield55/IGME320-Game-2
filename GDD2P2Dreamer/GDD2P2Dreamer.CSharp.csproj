@@ -87,11 +87,13 @@
     <Compile Include="Assets\Scripts\Character\WaterGun.cs" />
     <Compile Include="Assets\Scripts\Character\Weapon.cs" />
     <Compile Include="Assets\Scripts\Collectible.cs" />
+    <Compile Include="Assets\Scripts\Healing.cs" />
     <Compile Include="Assets\Scripts\MonsterScript\Bullet.cs" />
     <Compile Include="Assets\Scripts\MonsterScript\FireBullet.cs" />
     <Compile Include="Assets\Scripts\MonsterScript\Seeker.cs" />
     <Compile Include="Assets\Scripts\MonsterScript\Vehicle.cs" />
     <Compile Include="Assets\Scripts\TakeDamage.cs" />
+    <Compile Include="Assets\Scripts\UI\Coin.cs" />
     <Compile Include="Assets\Scripts\UI\UIControl.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -13,18 +13,29 @@ public class FireBullet : MonoBehaviour {
     //public GameObject body;
     // Use this for initialization
     public Rigidbody BulletPrefab;
-    public float Speed = 10;
+    public float Speed = 0.05f;
+    public GameObject target;
 
-	void Start () {
+    public float fireRate = 2.0f;
+    private float nextFire = 0.0f;
+
+    void Start()
+    {
         //bulletSpeed = 100;
         //active = false;
         //counter = 0;
         //transform.position = body.transform.position;
         //originPos = transform.position;
-	}
-	
-	// Update is called once per frame
-	void Update () {
+
+        //InvokeRepeating("Fire", 2.0f, 2.0f);
+
+
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
         //float distBetweenPlayer = Vector3.Distance(player.transform.position, body.transform.position);
         //if(distBetweenPlayer <= 50 && active == false)
         //{
@@ -38,10 +49,19 @@ public class FireBullet : MonoBehaviour {
 
         //    print("Enemy hit the player.......");
         //}
-        if(Input.GetKeyDown(KeyCode.F))
+
+        Vector3 dist = target.transform.position - transform.position;
+
+        if (dist.magnitude < 4 && Time.time > nextFire)
         {
+            nextFire = Time.time + fireRate;
             Fire();
         }
+
+        //if (Input.GetKeyDown(KeyCode.F))
+        //{
+        //    Fire();
+        //}
 
     }
 

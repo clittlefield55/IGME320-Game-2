@@ -10,16 +10,17 @@ public class Bullet : MonoBehaviour {
 	void Start () {
         spawnTime = Time.time;
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	    if(Time.time >= spawnTime +0.5)
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (Time.time >= spawnTime + 2)
         {
             //print("Destroy through time");
             gameObject.SetActive(false);
             Destroy(gameObject);
         }
-	}
+    }
 
     void OnCollisionEnter(UnityEngine.Collision col)
     {
@@ -39,7 +40,7 @@ public class Bullet : MonoBehaviour {
 
             Debug.Log("Hit!" + col.gameObject.name);
 
-            Destroy(gameObject);
+            //Destroy(gameObject);
 
 
         }

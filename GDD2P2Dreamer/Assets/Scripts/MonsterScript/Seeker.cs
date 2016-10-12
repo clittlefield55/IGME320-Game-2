@@ -22,12 +22,14 @@ public class Seeker : Vehicle {
 
 
     // Call Inherited Start and then do our own
-    override public void Start() {
+    override public void Start()
+    {
         base.Start();
         ultimateForce = Vector3.zero;
     }
 
-    protected override void CalcSteeringForces() {
+    protected override void CalcSteeringForces()
+    {
         //reset ultimate force
         ultimateForce = Vector3.zero;
 
@@ -35,11 +37,14 @@ public class Seeker : Vehicle {
         //add that seeking force to the ultimate steering force
 
         Vector3 dist = seekerTarget.transform.position - transform.position;
-        if (dist.magnitude <= 2) {
+        if (dist.magnitude <= 4)
+        {
             maxSpeed = 0f;
             ultimateForce += Seek(seekerTarget.transform.position) * seekWeight;
-        } else {
-            maxSpeed = 3f;
+        }
+        else
+        {
+            maxSpeed = 1f;
             ultimateForce += Seek(seekerTarget.transform.position - new Vector3(0, 0, 0)) * seekWeight;
         }
 
@@ -54,5 +59,4 @@ public class Seeker : Vehicle {
         //applyForce to acceleration
         ApplyForce(ultimateForce);
     }
-
 }
