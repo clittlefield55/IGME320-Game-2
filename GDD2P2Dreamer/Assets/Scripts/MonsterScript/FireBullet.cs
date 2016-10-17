@@ -19,6 +19,10 @@ public class FireBullet : MonoBehaviour {
     public float fireRate = 2.0f;
     private float nextFire = 0.0f;
 
+    public AudioClip fireSound2;
+
+    private AudioSource source4;
+
     void Start()
     {
         //bulletSpeed = 100;
@@ -32,7 +36,10 @@ public class FireBullet : MonoBehaviour {
 
 
     }
-
+    void Awake()
+    {
+        source4 = GetComponent<AudioSource>();
+    }
     // Update is called once per frame
     void Update()
     {
@@ -56,6 +63,7 @@ public class FireBullet : MonoBehaviour {
         {
             nextFire = Time.time + fireRate;
             Fire();
+            source4.PlayOneShot(fireSound2, 1);
         }
 
         //if (Input.GetKeyDown(KeyCode.F))

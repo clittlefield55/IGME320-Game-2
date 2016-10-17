@@ -8,9 +8,18 @@ public class Healing : MonoBehaviour {
     public bool hasCollided = false;
     string keyPrompt = "";
 
+    public AudioClip healSound;
+
+    private AudioSource source2;
+
     void Start()
     {
         healthBar = transform.FindChild("PlayerCanvas").FindChild("HealthBar").FindChild("Health").GetComponent<Image>();
+    }
+
+    void Awake()
+    {
+        source2 = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -22,6 +31,7 @@ public class Healing : MonoBehaviour {
             this.GetComponent<TakeDamage>().currentHealth = this.GetComponent<TakeDamage>().totalHealth;
             healthBar.fillAmount = (float)this.GetComponent<TakeDamage>().totalHealth;
             hasCollided = false;
+            source2.PlayOneShot(healSound, 1);
         }
     }
 

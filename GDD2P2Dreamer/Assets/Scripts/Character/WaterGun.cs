@@ -11,7 +11,11 @@ public class WaterGun : MonoBehaviour {
     float counter;
     bool isFiring;
     bool hasFired;
-    
+
+    //sound
+    public AudioClip fireSound;
+
+    private AudioSource source3;
 
 	// Use this for initialization
 	void Start ()
@@ -21,16 +25,21 @@ public class WaterGun : MonoBehaviour {
         ammo = 5000;
         isFiring = false;
 
-	}
-	
-	// Update is called once per frame
-	void Update ()
+    }
+
+    void Awake()
+    {
+        source3 = GetComponent<AudioSource>();
+    }
+    // Update is called once per frame
+    void Update ()
     {
 	    if(Input.GetKeyDown(KeyCode.Mouse0))
         {
             Fire();
+            source3.PlayOneShot(fireSound, 10f);
         }
-	}
+    }
 
     void Fire()
     {
