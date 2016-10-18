@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour {
     public float turnSpeed = 5.0f;
 	// Use this for initialization
 	void Start () {
-	
+        Cursor.visible = false;
 	}
 	
 	// Update is called once per frame
