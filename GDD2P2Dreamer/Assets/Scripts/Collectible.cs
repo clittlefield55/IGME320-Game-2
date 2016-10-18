@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class Collectible : MonoBehaviour {
 
@@ -33,6 +34,14 @@ public class Collectible : MonoBehaviour {
             Destroy(col.gameObject);
             GameObject.Find("CoinText").GetComponent<Coin>().addCoin();
             coinCollected++;
+        }
+        if (col.gameObject.tag == "Diary")
+        {
+            Destroy(col.gameObject);
+            //diaryGameObj.SetActive(true);
+            GameObject.Find("DiaryButton").GetComponent<Image>().color = new Color(50, 50, 50);
+            GameObject.Find("DiaryButton").GetComponent<DiaryControl>().diary = true;
+
         }
     }
 }

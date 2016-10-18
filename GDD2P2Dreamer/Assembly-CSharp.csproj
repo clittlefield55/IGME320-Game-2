@@ -58,6 +58,7 @@
      <Compile Include="Assets\Scripts\MonsterScript\Vehicle.cs" />
      <Compile Include="Assets\Scripts\TakeDamage.cs" />
      <Compile Include="Assets\Scripts\UI\Coin.cs" />
+     <Compile Include="Assets\Scripts\UI\DiaryControl.cs" />
      <Compile Include="Assets\Scripts\UI\UIControl.cs" />
      <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
      <None Include="Assets\Standard Assets\Characters\ThirdPersonCharacter\ThirdPersonCharacterGuidelines.txt" />
