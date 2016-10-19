@@ -8,6 +8,8 @@ public class Healing : MonoBehaviour {
     public bool hasCollided = false;
     string keyPrompt = "";
 
+    public GameObject teddyBear;
+
     public AudioClip healSound;
 
     private AudioSource source2;
@@ -33,19 +35,8 @@ public class Healing : MonoBehaviour {
             hasCollided = false;
             source2.PlayOneShot(healSound, 1);
         }
-    }
-
-    void OnGUI()
-    {
-        if (hasCollided)
-        {
-            GUI.Box(new Rect(140, Screen.height - 50, Screen.width - 300, 120), (keyPrompt));
-        }
-    }
-
-    void OnCollisionEnter(UnityEngine.Collision col)
-    {
-        if (col.gameObject.tag == "Heal Item")
+        float distance = Vector3.Distance(transform.position, teddyBear.transform.position);
+        if (distance <= 3)
         {
             if (this.GetComponent<TakeDamage>().currentHealth < this.GetComponent<TakeDamage>().totalHealth)
             {
@@ -62,5 +53,18 @@ public class Healing : MonoBehaviour {
         {
             hasCollided = false;
         }
+    }
+
+    void OnGUI()
+    {
+        if (hasCollided)
+        {
+            GUI.Box(new Rect(140, Screen.height - 50, Screen.width - 300, 120), (keyPrompt));
+        }
+    }
+
+    void OnCollisionEnter(UnityEngine.Collision col)
+    {
+
     }
 }

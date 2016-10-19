@@ -30,6 +30,8 @@ public class Seeker : Vehicle {
 
     protected override void CalcSteeringForces()
     {
+        seekerTarget = GameObject.Find("body"); // not sure
+
         //reset ultimate force
         ultimateForce = Vector3.zero;
 

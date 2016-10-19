@@ -13,6 +13,10 @@ public class Collectible : MonoBehaviour {
 
     private AudioSource source;
 
+    void Start()
+    {
+    }
+
     void Awake()
     {
         source = GetComponent<AudioSource>();

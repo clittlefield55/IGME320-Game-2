@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class Spray : MonoBehaviour {
-
+    public int atk;
     float sprayLife;
     float maxLife;
     float bulletSpeed;
@@ -17,10 +17,13 @@ public class Spray : MonoBehaviour {
         bulletSpeed = 0.02f;
         velocity = Vector3.zero;
         ifHit = false;
+        atk = 1;
 	}
 	
 	// Update is called once per frame
 	void Update () {
+        atk = GameObject.Find("PlayerCollider").GetComponent<PlayerController>().attack;
+
         sprayLife += Time.deltaTime; //add the game tick's time to the bullet life
         Move(); //make the bullet move
         if (sprayLife >= maxLife) //if the bullet runs out of time
@@ -35,10 +38,11 @@ public class Spray : MonoBehaviour {
 
     void OnCollisionEnter(UnityEngine.Collision splat)
     {
-      
+        Debug.Log("Collide!");
+
         if (splat.gameObject.tag == "Enemy")
         {
-            //Debug.Log("Ouch!");
+            Debug.Log("Ouch!");
             // insert take damage code here.
             //nme = splat.gameObject;
             //nme.takeDamage(10);
@@ -48,7 +52,7 @@ public class Spray : MonoBehaviour {
             //enemy = splat.gameObject;
             //enemy.GetComponent<TakeDamage>().GetDamage(1);
 
-            splat.gameObject.GetComponent<TakeDamage>().GetDamage(1);
+            splat.gameObject.GetComponent<TakeDamage>().GetDamage(atk);
          
             Debug.Log("Hit!"+splat.gameObject.name);
 

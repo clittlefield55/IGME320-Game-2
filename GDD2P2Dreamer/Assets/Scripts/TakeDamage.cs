@@ -19,6 +19,7 @@ public class TakeDamage : MonoBehaviour {
         }
         if(this.gameObject.tag == "Player")
         {
+            //totalHealth = 20;
             healthBar = transform.FindChild("PlayerCanvas").FindChild("HealthBar").FindChild("Health").GetComponent<Image>();
         }
         isDead = false;
@@ -27,6 +28,9 @@ public class TakeDamage : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+        totalHealth = GameObject.Find("PlayerCollider").GetComponent<PlayerController>().hp;
+        //currentHealth = totalHealth;
+    
         // if damaged // fade out
         //if(Input.GetKeyDown(KeyCode.G))
         //{

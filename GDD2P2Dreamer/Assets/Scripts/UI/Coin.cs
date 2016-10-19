@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class Coin : MonoBehaviour {
 
-    int coinNum = 0;
+    public int coinNum = 0;
     UnityEngine.UI.Text coin;
     //public GUIText coinText;
 	// Use this for initialization
@@ -20,5 +20,9 @@ public class Coin : MonoBehaviour {
     public void addCoin()
     {
         coinNum++;
+    }
+    public void useCoin(int num)
+    {
+        coinNum = coinNum - num;
     }
 }

@@ -6,9 +6,11 @@ public class PlayerController : MonoBehaviour {
 	public float moveSpeed = 10.0f;
     public float jumpSpeed = 8.0f;
     public float turnSpeed = 5.0f;
+    public int attack = 1;
+    public int hp = 20;
 	// Use this for initialization
 	void Start () {
-        Cursor.visible = false;
+        //Cursor.visible = false;
 	}
 	
 	// Update is called once per frame
@@ -31,8 +33,12 @@ public class PlayerController : MonoBehaviour {
         transform.Rotate(0, turn, 0);
     }
 
-    void TakeDamage()
+    public void hpUpgrade ()
     {
-
+        hp += 5;
+    }
+    public void atkUpgrade()
+    {
+        attack += 1;
     }
 }

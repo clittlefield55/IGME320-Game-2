@@ -34,7 +34,6 @@ public class FireBullet : MonoBehaviour {
         //InvokeRepeating("Fire", 2.0f, 2.0f);
 
 
-
     }
     void Awake()
     {
@@ -43,6 +42,8 @@ public class FireBullet : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+        target = GameObject.Find("body");
+
         //float distBetweenPlayer = Vector3.Distance(player.transform.position, body.transform.position);
         //if(distBetweenPlayer <= 50 && active == false)
         //{
