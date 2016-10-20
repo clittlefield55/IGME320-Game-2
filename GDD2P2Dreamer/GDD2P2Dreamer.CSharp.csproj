@@ -58,6 +58,12 @@
     <Reference Include="UnityEngine.Networking">
       <HintPath>Library\UnityAssemblies\UnityEngine.Networking.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine.Networking">
+      <HintPath>Library\UnityAssemblies\UnityEngine.Networking.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
     </Reference>
@@ -84,11 +90,16 @@
     <Compile Include="Assets\Scripts\Healing.cs" />
     <Compile Include="Assets\Scripts\MonsterScript\Bullet.cs" />
     <Compile Include="Assets\Scripts\MonsterScript\FireBullet.cs" />
+    <Compile Include="Assets\Scripts\MonsterScript\RoundManager.cs" />
     <Compile Include="Assets\Scripts\MonsterScript\Seeker.cs" />
     <Compile Include="Assets\Scripts\MonsterScript\Vehicle.cs" />
+    <Compile Include="Assets\Scripts\MonsterScript\ignoreCoin.cs" />
     <Compile Include="Assets\Scripts\TakeDamage.cs" />
     <Compile Include="Assets\Scripts\UI\Coin.cs" />
+    <Compile Include="Assets\Scripts\UI\DiaryControl.cs" />
+    <Compile Include="Assets\Scripts\UI\HpAtkControl.cs" />
     <Compile Include="Assets\Scripts\UI\UIControl.cs" />
+    <Compile Include="Assets\Scripts\UI\UpGrade.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Standard Assets\Characters\FirstPersonCharacter\FirstPersonCharacterGuidelines.txt" />
