@@ -3,64 +3,75 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 
-public class RoundManager : MonoBehaviour {
+public class RoundManager : MonoBehaviour
+{
 
     List<UnityEngine.Object> enemies;
     List<bool> dead;
-    int[] roundCount = { 3, 4, 5, 1 };
+    int[] roundCount = { 3, 4, 5 };
+    int currentRound;
     public GameObject enemyPrefab;
     public GameObject diary;
+    UnityEngine.Object pickup;
     public int width;
     public int length;
     int bodyCount;
     bool newRound;
-    bool diarySpond = false;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
         enemies = new List<UnityEngine.Object>();
         dead = new List<bool>();
 
-        for(int i = 0; i < 1; i++)
-        {
-            dead.Add(false);
-        }
+
         newRound = true;
         bodyCount = 0;
+        currentRound = 0;
     }
-	
-	// Update is called once per frame
-	void Update () {
-	    if(newRound)
-        {
-            SetRound(1);
-            newRound = false;
-        }
 
-        for(int i = 0; i < 1; i++)
+    // Update is called once per frame
+    void Update()
+    {
+        if (currentRound < roundCount.Length)
         {
-            if (enemies[i] == null)
+            if (newRound)
             {
-                dead[i] = true;
+                SetRound(roundCount[currentRound]);
+                newRound = false;
+            }
+
+            for (int i = 0; i < roundCount[currentRound]; i++)
+            {
+                if (enemies[i] == null)
+                {
+                    dead[i] = true;
+                }
+            }
+
+            if (CheckAllDead())
+            {
+                currentRound++;
+                newRound = true;
             }
         }
 
-        if (CheckAllDead()&& diarySpond==false)
+        if (currentRound >= roundCount.Length)
         {
-            diarySpond = true;
-            Instantiate(diary, new Vector3(0, 0.5f,0), Quaternion.identity);
+            //Do win state
+            pickup = Instantiate(diary, new Vector3(0, 0.5f, 0), Quaternion.identity);
         }
 
-	}
+    }
 
     public bool CheckAllDead()
     {
-        foreach(bool b in dead)
+        foreach (bool b in dead)
         {
-           if(b == false)
-           {
-               return false;
-           }
+            if (b == false)
+            {
+                return false;
+            }
         }
 
         return true;
@@ -69,12 +80,19 @@ public class RoundManager : MonoBehaviour {
     void SetRound(int num)
     {
         System.Random gen = new System.Random();
-        for(int i = 0; i < num; i++)
+        enemies.Clear();
+        for (int i = 0; i < num; i++)
         {
-            int x = gen.Next(-(width/2), (width / 2));
+            int x = gen.Next(-(width / 2), (width / 2));
             int z = gen.Next(-(width / 2), (width / 2));
             UnityEngine.Object nme = Instantiate(enemyPrefab, new Vector3(x, 0.278f, z), Quaternion.identity);
             enemies.Add(nme);
+        }
+
+        dead.Clear();
+        for (int i = 0; i < num; i++)
+        {
+            dead.Add(false);
         }
     }
 
