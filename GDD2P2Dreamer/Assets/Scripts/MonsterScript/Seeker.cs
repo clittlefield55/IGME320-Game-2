@@ -1,20 +1,21 @@
 using UnityEngine;
 using System.Collections;
 
-public class Seeker : Vehicle {
+public class Seeker : Vehicle
+{
 
     public GameObject seekerTarget;
 
 
     //weighting
-    public float seekWeight = 60.0f;
+    public float seekWeight = 10.0f;
 
     //ultimate steering force that will be applied to acceleration
     private Vector3 ultimateForce;
 
     //define necessary weights for seeker
     //public float avoidWeight = 30.0f;
-    //public float sepWeight = 10.0f;
+    public float sepWeight = 60.0f;
     //public float allignWeight = 20.0f;
     //public float cohWeight = 50.0f;
 
@@ -49,6 +50,8 @@ public class Seeker : Vehicle {
             maxSpeed = 1f;
             ultimateForce += Seek(seekerTarget.transform.position - new Vector3(0, 0, 0)) * seekWeight;
         }
+
+        ultimateForce += Separation() * sepWeight;
 
         //avoiding obstacle
         //for(int i = 0; i < gm.Obstacles.Length; i++){

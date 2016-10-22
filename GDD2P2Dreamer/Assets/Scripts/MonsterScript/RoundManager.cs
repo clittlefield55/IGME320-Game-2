@@ -6,22 +6,28 @@ using System;
 public class RoundManager : MonoBehaviour
 {
 
-    List<UnityEngine.Object> enemies;
-    List<bool> dead;
+    private List<GameObject> enemies;
+    private List<bool> dead;
     int[] roundCount = { 3, 4, 5 };
     int currentRound;
     public GameObject enemyPrefab;
     public GameObject diary;
-    UnityEngine.Object pickup;
+    GameObject pickup;
     public int width;
     public int length;
     int bodyCount;
     bool newRound;
 
+    public List<GameObject> Enemies
+    {
+        get { return enemies; }
+    }
+
+
     // Use this for initialization
     void Start()
     {
-        enemies = new List<UnityEngine.Object>();
+        enemies = new List<GameObject>();
         dead = new List<bool>();
 
 
@@ -59,7 +65,7 @@ public class RoundManager : MonoBehaviour
         if (currentRound >= roundCount.Length)
         {
             //Do win state
-            pickup = Instantiate(diary, new Vector3(0, 0.5f, 0), Quaternion.identity);
+            pickup = (GameObject)Instantiate(diary, new Vector3(0, 0.5f, 0), Quaternion.identity);
         }
 
     }
@@ -85,7 +91,7 @@ public class RoundManager : MonoBehaviour
         {
             int x = gen.Next(-(width / 2), (width / 2));
             int z = gen.Next(-(width / 2), (width / 2));
-            UnityEngine.Object nme = Instantiate(enemyPrefab, new Vector3(x, 0.278f, z), Quaternion.identity);
+            GameObject nme = (GameObject)Instantiate(enemyPrefab, new Vector3(x, 0.278f, z), Quaternion.identity);
             enemies.Add(nme);
         }
 
@@ -95,5 +101,7 @@ public class RoundManager : MonoBehaviour
             dead.Add(false);
         }
     }
+
+
 
 }

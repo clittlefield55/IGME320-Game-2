@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class TakeDamage : MonoBehaviour {
 
+    public Object pickup;
     public int totalHealth = 5;
     public int currentHealth;
     private Image healthBar;
@@ -67,6 +68,10 @@ public class TakeDamage : MonoBehaviour {
 
     public void DeadEffect()
     {
+        if (this.gameObject.tag == "Enemy")
+        {
+            Instantiate(pickup, transform.position, Quaternion.identity);
+        }
 
         Destroy(mainBody, 0.1f);
         if (this.gameObject.tag == "Player")
