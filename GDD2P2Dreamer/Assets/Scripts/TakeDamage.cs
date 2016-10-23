@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class TakeDamage : MonoBehaviour {
 
     public Object pickup;
-    public int totalHealth = 5;
+    public int totalHealth = 10;
     public int currentHealth;
     private Image healthBar;
 
@@ -13,16 +13,18 @@ public class TakeDamage : MonoBehaviour {
     public GameObject mainBody;
 	// Use this for initialization
 	void Start () {
-        currentHealth = totalHealth;
         if (this.gameObject.tag == "Enemy")
         {
+            totalHealth = 10;
             healthBar = transform.FindChild("EnemyCanvas").FindChild("HealthBar").FindChild("Health").GetComponent<Image>();
         }
         if(this.gameObject.tag == "Player")
         {
             //totalHealth = 20;
+            totalHealth = GameObject.Find("PlayerCollider").GetComponent<TakeDamage>().totalHealth;
             healthBar = transform.FindChild("PlayerCanvas").FindChild("HealthBar").FindChild("Health").GetComponent<Image>();
         }
+        currentHealth = totalHealth;
         isDead = false;
 	}
 	
@@ -30,6 +32,7 @@ public class TakeDamage : MonoBehaviour {
 	void Update () {
 
         totalHealth = GameObject.Find("PlayerCollider").GetComponent<PlayerController>().hp;
+        print(totalHealth);
         //currentHealth = totalHealth;
     
         // if damaged // fade out

@@ -13,8 +13,8 @@ public class HpAtkControl : MonoBehaviour {
     // Use this for initialization
     void Start () {
         // set hp and attack
-        hp = GameObject.Find("PlayerCollider").GetComponent<TakeDamage>().totalHealth;
-        //atk = GameObject.FindGameObjectWithTag("PlayerBullet").GetComponent<Spray>().atk;
+        hp = GameObject.Find("PlayerCollider").GetComponent<PlayerController>().hp;
+        atk = GameObject.Find("PlayerCollider").GetComponent<PlayerController>().attack;
         // text
         hpText = GameObject.Find("HpText").GetComponent<Text>();
         atkText = GameObject.Find("AtkText").GetComponent<Text>();
@@ -27,9 +27,10 @@ public class HpAtkControl : MonoBehaviour {
         hp = GameObject.Find("PlayerCollider").GetComponent<PlayerController>().hp;
         atk = GameObject.Find("PlayerCollider").GetComponent<PlayerController>().attack;
 
+        
         hpText.text = "Health: " + hp;
         atkText.text = "Attack: " + atk;
 
-
+        //GameObject.Find("PlayerCollider").GetComponent<PlayerController>().hp = 
     }
 }

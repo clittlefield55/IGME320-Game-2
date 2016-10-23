@@ -38,6 +38,16 @@ public class UpGrade : MonoBehaviour {
         }
         if(UIActive == true)
         {
+            // quit
+            if(Input.GetKeyDown(KeyCode.Escape))
+            {
+                UIActive = false;
+                cabinetCanvas.SetActive(false);
+                UpGradeUI.SetActive(false);
+                monsterControl.GetComponent<RoundManager>().finishUpGrade = true;
+                return;
+            }
+
 
             ColorBlock cb = ColorBlock.defaultColorBlock;
             // set bool
@@ -82,12 +92,9 @@ public class UpGrade : MonoBehaviour {
                 if (Input.GetKey(KeyCode.DownArrow) )
                 {
                     print("ATTACK Button");
+                    print(coinNum);
                     locator = 1;
-                    //onPress = true;
-                    //cb.normalColor = new Color(255,255,255);
-                    //GameObject.Find("AtkButton").GetComponent<Button>().colors = cb;
-                    //cb.normalColor = Color.grey;
-                    //GameObject.Find("HPButton").GetComponent<Button>().colors = cb;
+
                 }
 
                 if (Input.GetKeyDown(KeyCode.U)&& coinNum>=5)

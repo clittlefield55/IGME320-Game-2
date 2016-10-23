@@ -17,7 +17,8 @@ public class RoundManager : MonoBehaviour
     public int length;
     int bodyCount;
     bool newRound;
-
+    bool diaryPlaced = false;
+    public bool finishUpGrade = false;
     public List<GameObject> Enemies
     {
         get { return enemies; }
@@ -57,14 +58,21 @@ public class RoundManager : MonoBehaviour
 
             if (CheckAllDead())
             {
-                currentRound++;
-                newRound = true;
+
+                if (finishUpGrade == true)
+                {
+                    currentRound++;
+
+                    newRound = true;
+                    finishUpGrade = false;
+                }
             }
         }
 
-        if (currentRound >= roundCount.Length)
+        if (currentRound >= roundCount.Length && diaryPlaced == false)
         {
             //Do win state
+            diaryPlaced = true;
             pickup = (GameObject)Instantiate(diary, new Vector3(0, 0.5f, 0), Quaternion.identity);
         }
 

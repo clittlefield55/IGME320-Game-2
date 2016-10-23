@@ -7,11 +7,13 @@ public class PlayerController : MonoBehaviour {
     public float jumpSpeed = 8.0f;
     public float turnSpeed = 5.0f;
     public int attack = 1;
-    public int hp = 20;
+    public int hp = 8;
 	// Use this for initialization
 	void Start () {
         //Cursor.visible = false;
-	}
+    attack = 1;
+    hp = 8;
+}
 	
 	// Update is called once per frame
 	void Update () {
@@ -36,9 +38,12 @@ public class PlayerController : MonoBehaviour {
     public void hpUpgrade ()
     {
         hp += 5;
+        GameObject.Find("PlayerCollider").GetComponent<TakeDamage>().currentHealth = hp;
+        print("hp Upgrade");
     }
     public void atkUpgrade()
     {
         attack += 1;
+        print("atk upgrade");
     }
 }
