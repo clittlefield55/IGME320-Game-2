@@ -58,13 +58,19 @@ public class RoundManager : MonoBehaviour
 
             if (CheckAllDead())
             {
+                if (currentRound < roundCount.Length - 1)
+                {
+                    if (finishUpGrade == true)
+                    {
+                        currentRound++;
 
-                if (finishUpGrade == true)
+                        newRound = true;
+                        finishUpGrade = false;
+                    }
+                }
+                else
                 {
                     currentRound++;
-
-                    newRound = true;
-                    finishUpGrade = false;
                 }
             }
         }
