@@ -35,11 +35,14 @@ public class RoundManager : MonoBehaviour
         newRound = true;
         bodyCount = 0;
         currentRound = 0;
+
+
     }
 
     // Update is called once per frame
     void Update()
     {
+
         if (currentRound < roundCount.Length)
         {
             if (newRound)

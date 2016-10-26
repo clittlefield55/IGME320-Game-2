@@ -12,10 +12,21 @@ public class UIControl : MonoBehaviour {
         page2 = GameObject.Find("Page2");
         page1.SetActive(false);
         page2.SetActive(false);
+
     }
     public void ChangeScene(string sceneName)
     {
         Application.LoadLevel(sceneName);
+        //if (sceneName == "game1")
+        //{
+        //    Cursor.visible = false;
+
+        //}
+        //else
+        //{
+        //    Cursor.visible = true;
+
+        //}
     }
     public void ChangePage(int id)
     {
